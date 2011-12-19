@@ -71,16 +71,16 @@
                   <li><a href="#"><p>100 Tokens : $75</p></a></li>
               </ul>
         </div>
-   	  <div class="loginBox">
+        <div class="loginBox">
       	<h5>Login</h5>
-        <form action="" method="get">
+        <form action="login.php" method="POST">
         
         <label><p>Username</p></label>
-        <input name="usernameInput" type="text"/>
+        <input name="username" type="text"/>
         <label><p>Password</p></label>
-        <input name="passwordInput" type="text" />
+        <input name="password" type="password" />
         <p><input name="remember" type="checkbox" value="" checked="checked"/> Remember me</p>
-        <input name="signIn" type="button" value="Sign In" />
+        <input name="signIn" type="submit" value="Sign In" />
     	
         </form>
         </div>
