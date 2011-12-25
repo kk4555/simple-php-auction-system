@@ -7,7 +7,7 @@
 
 require 'conf.php';
 
-session_start();
+@session_start();
 
 // Obtain username & password from form
 $username = $_POST['username'];
@@ -20,13 +20,16 @@ $sql = "SELECT * FROM users WHERE user_Name='$username'
 $result = mysqli_query($connect, $sql);
 
 $count = mysqli_num_rows($result);
+
 if ($count==1) {
     $_SESSION['username']=$username;
     $_SESSION['password']=$password;
-    echo 'Login Succeeded!!!';
+    $_SESSION['error']=0;
+    
 }
 else {
-    echo 'Wrong Username or Password!!!';
+    $_SESSION['error']=1;
 }
-
+header('Location: index.php');
+mysqli_close();
 ?>

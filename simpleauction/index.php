@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,9 +17,9 @@
 <script type="text/javascript" src="./js/superfish.js"></script>
 <script type="text/javascript" src="./js/custom.js"></script>
 
-<meta charset="UTF-8">
+<meta charset="UTF-8"></meta>
 </head>
-
+    
 <body>
 
 <!-- START HEADER -->
@@ -72,8 +75,30 @@
               </ul>
         </div>
         <div class="loginBox">
-      	<h5>Login</h5>
-        <form action="login.php" method="POST">
+      	<?php
+        if ($_SESSION['error']==1) {
+            echo '<script language="javascript">alert("Wrong username or password")</script>';
+        ?>
+             <h5>Login</h5> 
+                <form action="login.php" method="POST">
+        
+        <label><p>Username</p></label>
+        <input name="username" type="text"/>
+        <label><p>Password</p></label>
+        <input name="password" type="password" />
+        <p></p>
+        <input name="signIn" type="submit" value="Sign In" />
+    	
+        </form>
+        <?php
+        }
+        elseif ($_SESSION['username']!='') {
+            echo '<span style=color:white>Welcome back, '.'<b>'.$_SESSION['username'].'</b>. <a href="logout.php" alt="Log Out">Log Out</a></span>';
+        }
+        else {
+        ?>
+            <h5>Login</h5> 
+                <form action="login.php" method="POST">
         
         <label><p>Username</p></label>
         <input name="username" type="text"/>
@@ -83,6 +108,10 @@
         <input name="signIn" type="submit" value="Sign In" />
     	
         </form>
+         
+        <?php
+        }
+        ?>
         </div>
     </div>
 </div><!-- END HEADER DIVIDER -->

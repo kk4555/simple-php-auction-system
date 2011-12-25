@@ -24,14 +24,6 @@ $dbname = "simpleauction";
 /*
  * Open connection to MySQL Server
  */
-$connect = new mysqli($server, $dbuser, $pwd, $dbname);
-
-/*
- * Check for connection error.
- */
-if(mysqli_connect_error()) {
-    die('Connect Error!!! Please re-check your configuration.');
-}
-
+$connect = mysqli_connect($server, $dbuser, $pwd, $dbname) or die('Connect Error!!! Please re-check your configuration.');
 
 ?>
