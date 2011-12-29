@@ -8,13 +8,21 @@
     <!-- Include CSS -->
     <link href="./css/reset.css" rel="stylesheet" type="text/css" />
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./css/slimbox2.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Oswald|Droid+Sans:400,700' rel='stylesheet' type='text/css' />
 
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script type="text/javascript" src="./js/superfish.js"></script>
-<script type="text/javascript" src="./js/custom.js"></script>
-
-<meta charset="UTF-8">
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle.lite.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pngFix.pack.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript" src="js/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/slimbox2.js"></script>
+    <script type="text/javascript" src="js/slides.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>	
+    
+    <meta charset="UTF-8"></meta>
 </head>
 
 <body>
@@ -27,12 +35,12 @@
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-                <li class="current"><a href="./index.html">Home</a></li>
-                <li><a href="./item.html">Item List</a></li>
-                <li><a href="./ended.html">Ended Items</a></li>
-              <li><a href="./register.html">Register</a></li>
-                <li><a href="./about.html">About Us</a></li>	
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>
+                <li><a href="./item.php">Item List</a></li>
+                <li><a href="./ended.php">Ended Items</a></li>
+                <li><a href="./register.php">Register</a></li>
+                <li><a href="./about.php">About Us</a></li>	
+                <li><a href="./contact.php">Contact</a></li>
                 <li>
                 	<a href="#">Category</a>
                     <ul>
