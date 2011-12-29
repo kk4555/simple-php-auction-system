@@ -11,13 +11,22 @@ session_start();
     <!-- Include CSS -->
     <link href="./css/reset.css" rel="stylesheet" type="text/css" />
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
+    <link href="./css/slimbox2.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Oswald|Droid+Sans:400,700' rel='stylesheet' type='text/css' />
 
- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<script type="text/javascript" src="./js/superfish.js"></script>
-<script type="text/javascript" src="./js/custom.js"></script>
+    <!-- Include Scripts -->	
+    <script type="text/javascript" src="./js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.cycle.lite.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pngFix.pack.js"></script>
+    <script type="text/javascript" src="js/jquery.color.js"></script>
+    <script type="text/javascript" src="js/hoverIntent.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/slimbox2.js"></script>
+    <script type="text/javascript" src="js/slides.min.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>	
 
-<meta charset="UTF-8"></meta>
+
+    <meta charset="UTF-8"></meta>
 </head>
     
 <body>
@@ -30,12 +39,12 @@ session_start();
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-                <li class="current"><a href="./index.html">Home</a></li>
-                <li><a href="./item.html">Item List</a></li>
-                <li><a href="./ended.html">Ended Items</a></li>
-                <li><a href="./register.html">Register</a></li>
-                <li><a href="./about.html">About Us</a></li>	
-                <li><a href="./contact.html">Contact</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>
+                <li><a href="./item.php">Item List</a></li>
+                <li><a href="./ended.php">Ended Items</a></li>
+                <li><a href="./register.php">Register</a></li>
+                <li><a href="./about.php">About Us</a></li>	
+                <li><a href="./contact.php">Contact</a></li>
                 <li>
                 	<a href="#">Category</a>
                     <ul>
@@ -51,9 +60,7 @@ session_start();
         </div>
         
         <!-- LOGO -->        
-    	<a href="#"><img src="./images/logo.png" border="0" alt="MacLander App Site Template" /></a>
-        
-        <br class="clear" />
+    	<a href="#"><img src="./images/logo.png" border="0" alt="Simple Auction" /><br class="clear" />
         
     </div>
     
@@ -83,9 +90,9 @@ session_start();
                 <form action="login.php" method="POST">
         
         <label><p>Username</p></label>
-        <input name="username" type="text"/>
+        <input name="username" required="" type="text"/>
         <label><p>Password</p></label>
-        <input name="password" type="password" />
+        <input name="password" required="" type="password" />
         <p></p>
         <input name="signIn" type="submit" value="Sign In" />
     	
@@ -98,14 +105,15 @@ session_start();
         else {
         ?>
             <h5>Login</h5> 
-                <form action="login.php" method="POST">
+                <form id="login-form"" action="login.php" method="POST">
         
         <label><p>Username</p></label>
-        <input name="username" type="text"/>
+        <input class="input" name="username" type="text"/>
         <label><p>Password</p></label>
-        <input name="password" type="password" />
-        <p><input name="remember" type="checkbox" value="" checked="checked"/> Remember me</p>
-        <input name="signIn" type="submit" value="Sign In" />
+        <input class="input" name="password" type="password" />
+        <p class="button">
+                <input type="image" src="./images/log.png" value="Submit" name="submit" id="submit" />
+            </p>
     	
         </form>
          
