@@ -7,7 +7,7 @@
 
 require 'conf.php';
 
-@session_start();
+session_start();
 
 // Obtain username & password from form
 $username = $_POST['username'];
@@ -24,12 +24,13 @@ $count = mysqli_num_rows($result);
 if ($count==1) {
     $_SESSION['username']=$username;
     $_SESSION['password']=$password;
-    $_SESSION['error']=0;
-    
+	$data['username']=$username;  
+	$data['success'] = true; 
 }
 else {
-    $_SESSION['error']=1;
+	$data['success'] = false;
+	$data['message'] = 'Wrong username or password';
 }
-header('Location: index.php');
+echo json_encode($data);
 mysqli_close();
 ?>

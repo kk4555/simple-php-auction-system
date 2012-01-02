@@ -12,6 +12,13 @@ body{
 	width:960px;
 	margin:0px auto;
 }
+.minicontainer {
+	width:auto;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+
 .centerBox{
 	width:auto;
 	height:auto;
@@ -22,7 +29,6 @@ body{
 	width: 198px;
 	float: left;
 	border-left-width: thin;
-	border-left-style: dotted;
 	border-left-color: #999999;
 }
 
@@ -732,7 +738,7 @@ p{
 	color:#777777;
 }
 
-#comment-form input, #contact-form .input, #register-form .input{
+#comment-form input, #contact-form .input, #register-form, #common-form .input{
 	display:block;
 	height:27px;
 	line-height:27px;
@@ -747,21 +753,6 @@ p{
 	font-family:Arial, Helvetica, sans-serif;
 }
 
-#login-form .input {
-	display:block;
-	height:20px;
-	line-height:27px;
-	border:1px solid #cccccc;
-	padding:2px 8px;
-	-webkit-box-shadow: 0px 0px 5px 1px #dddddd;
-	-moz-box-shadow: 0px 0px 5px 1px #dddddd;
-	box-shadow: 0px 0px 5px 1px #dddddd;
-	width:150px;
-	color:#555555;
-	font-size:12px;
-	font-family:Arial, Helvetica, sans-serif;
-}
-	
 
 #comment-form textarea, #contact-form textarea{
 	border:1px solid #cccccc;
@@ -1227,7 +1218,7 @@ label.error {
   font-weight: bold;
   color: #EA5200;
 }
-label.checked {
+label.valid {
   background:url("../images/error/checked.gif") no-repeat 0px 0px;
 }
 .status {
@@ -1241,3 +1232,14 @@ label.checked {
   padding-bottom: 10px;
   white-space: nowrap;
 }
+div#successMsg, div#errorMsg {
+	color: white;
+}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }

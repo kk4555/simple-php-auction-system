@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -35,10 +38,11 @@
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-               <li class="current"><a href="./index.php">Home</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>
                 <li><a href="./item.php">Item List</a></li>
                 <li><a href="./ended.php">Ended Items</a></li>
-                <li><a href="./register.php">Register</a></li>
+                <?php if($_SESSION['username'] == "") 
+                    echo '<li><a href="./register.php">Register</a></li>'?>
                 <li><a href="./about.php">About Us</a></li>	
                 <li><a href="./contact.php">Contact</a></li>
                 <li>
@@ -52,7 +56,7 @@
                         <li><a href="#">Other</a></li>
                   </ul>  
               </li>
-          </ul>
+             </ul>
         </div>
         
         <!-- LOGO -->        
@@ -80,17 +84,27 @@
               </ul>
       </div>
    	  <div class="loginBox">
-      	<h5>Login</h5>
-        <form action="" method="get">
-        
-        <label><p>Username</p></label>
-        <input name="usernameInput" type="text"/>
-        <label><p>Password</p></label>
-        <input name="passwordInput" type="text" />
-        <p><input name="remember" type="checkbox" value="" checked="checked"/> Remember me</p>
-        <input name="signIn" type="button" value="Sign In" />
-   	  
-        </form>
+      	<? if ($_SESSION['username']=="") {
+				?>
+           
+            <form id="login-form" action="index.php" method="POST">
+             	 <h5>Login</h5>
+        	    <label><p>Username</p></label>
+        		<input class="input" name="username" id="username" type="text"/>
+        		<label><p>Password</p></label>
+        		<input class="input" name="password" id="password" type="password" />
+        		<p class="button">
+                <input type="submit"  value="Login" name="submit" id="submit" />
+            	</p>
+    	    </form>
+            <div id="successMsg"></div>
+            <div id="errorMsg"></div>
+            <?
+			}
+			else {
+				echo "<span style='color:white'>Welcome back, <b>".$_SESSION['username']."</b> | </span> <a href='logout.php'>Log Out</a>";
+			}
+			?>
       </div>
     </div>
 </div><!-- END HEADER DIVIDER -->

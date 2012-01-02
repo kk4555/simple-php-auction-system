@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if ($_SESSION['username'] != "") {
+    header('Location: index.php');
+}
+else {
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -48,18 +56,19 @@
 					email_confirm: {
 						required: true,
 						email: true,
-						equalto: "#email"
+						equalTo: "#email"
 					},
 					telephone: {
 						required: true,
 						digits: true
-					}
+					},
+                    terms: "required"
 				},
 				messages: {
 					username: {
 						required: "Enter an username",
 						minlength: jQuery.format("Enter at least {0} characters"),
-						remote: jQuery.format("{0} is already in use")
+						remote: "This username is already in use"
 					},
 					password: {
 						required: "Provide a password",
@@ -73,26 +82,31 @@
 					email: { 
                 		required: "Please enter a valid email address", 
                 		email: "Please enter a valid email address", 
-                		remote: jQuery.format("{0} is already in use") 
+                		remote: "This email is already in use"
             		},
 					email_confirm: { 
                 		required: "Repeat your email", 
                 		email: "Please enter a valid email address", 
                 		equalTo: "Enter the same email as above"
-            		}
+            		},
+					terms: " "
 				},
 				
 				errorPlacement: function(error, element) {
-					error.appendTo(element.parent().next());
+					if (element.is(":checkbox")) {
+						error.appendTo(element.next().next());
+					}
+					else {
+						error.appendTo(element.parent().next());
+					}
 				},
 						
 				success: function(label) {
-					label.addClass("checked");
+					label.addClass("valid");
 				} 					
 			});
 	});
-    </script>
-    
+    </script>    
     <meta charset="UTF-8"></meta>
 </head>
 
@@ -161,10 +175,9 @@
 <div class="centerBox">
 <!-- START MAIN CONTAINER --><br class="clear" />
 <div class="container">
-
-<h1>Fill in the registration form</h1>
+<h1 id="register">Fill in the registration form</h1><h1 id="success" style="display:none"> Registration Succeeded</h1>
 <hr />	
-	<form id="register-form" action="register.php" method="post">
+	<form id="register-form" method="post" action="join.php">
     <table>
     	<tr>
     		<td class="label"><h4>Username</h4></td>
@@ -197,7 +210,16 @@
     		<td class="field"><input class="input" id="telephone" name="telephone" type="tel" /></td>
             <td class="status"></td>
         </tr>
-        </table>
+        <tr>
+         	<td class="label">&nbsp;</td>
+			<td class="field" colspan="2">
+			<div id="termswrap">
+        		<input id="terms" type="checkbox" name="terms" />
+                <label id="lterms" for="terms">I have read and accept the Terms of Use.</label><span style="padding:15px"></span>
+			</div> <!-- /termswrap -->
+	  		</td>
+	  </tr>
+	</table>
     <p class="button">
     <input type="image" src="./images/submit.png" value="Submit" name="submit" id="submit" />
     </p>
@@ -230,3 +252,6 @@
 
 </body>
 </html>
+<?php
+}
+?>

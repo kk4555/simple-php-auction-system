@@ -24,7 +24,25 @@ session_start();
     <script type="text/javascript" src="js/slimbox2.js"></script>
     <script type="text/javascript" src="js/slides.min.js"></script>
     <script type="text/javascript" src="js/custom.js"></script>	
-
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#login-form').submit(function(){
+				$.post('login.php', {username: $('#username').val(), 
+					password: $('#password').val()}, function(data) {
+						if(data.success) {
+							$('#errorMsg').hide();
+							$('#login-form').hide(300);
+							$('#register').hide();
+							$('#successMsg').html("Welcome back, <b>" + data.username + "</b> | <a href='logout.php'>Log Out</a>");
+						}
+						else {
+							$('#errorMsg').html(data.message);
+						}
+					}, 'json');
+				return false;
+			});
+		});
+	</script>
 
     <meta charset="UTF-8"></meta>
 </head>
@@ -42,7 +60,8 @@ session_start();
                 <li class="current"><a href="./index.php">Home</a></li>
                 <li><a href="./item.php">Item List</a></li>
                 <li><a href="./ended.php">Ended Items</a></li>
-                <li><a href="./register.php">Register</a></li>
+                <?php if($_SESSION['username'] == "") 
+                    echo '<li id="register"><a href="./register.php">Register</a></li>'?>
                 <li><a href="./about.php">About Us</a></li>	
                 <li><a href="./contact.php">Contact</a></li>
                 <li>
@@ -82,44 +101,27 @@ session_start();
               </ul>
         </div>
         <div class="loginBox">
-      	<?php
-        if ($_SESSION['error']==1) {
-            echo '<script language="javascript">alert("Wrong username or password")</script>';
-        ?>
-             <h5>Login</h5> 
-                <form action="login.php" method="POST">
-        
-        <label><p>Username</p></label>
-        <input name="username" required="" type="text"/>
-        <label><p>Password</p></label>
-        <input name="password" required="" type="password" />
-        <p></p>
-        <input name="signIn" type="submit" value="Sign In" />
-    	
-        </form>
-        <?php
-        }
-        elseif ($_SESSION['username']!='') {
-            echo '<span style=color:white>Welcome back, '.'<b>'.$_SESSION['username'].'</b>. <a href="logout.php" alt="Log Out">Log Out</a></span>';
-        }
-        else {
-        ?>
-            <h5>Login</h5> 
-                <form id="login-form"" action="login.php" method="POST">
-        
-        <label><p>Username</p></label>
-        <input class="input" name="username" type="text"/>
-        <label><p>Password</p></label>
-        <input class="input" name="password" type="password" />
-        <p class="button">
-                <input type="image" src="./images/log.png" value="Submit" name="submit" id="submit" />
-            </p>
-    	
-        </form>
-         
-        <?php
-        }
-        ?>
+        	<? if ($_SESSION['username']=="") {
+				?>
+           
+            <form id="login-form" action="index.php" method="POST">
+             	 <h5>Login</h5>
+        	    <label><p>Username</p></label>
+        		<input class="input" name="username" id="username" type="text"/>
+        		<label><p>Password</p></label>
+        		<input class="input" name="password" id="password" type="password" />
+        		<p class="button">
+                <input type="submit"  value="Login" name="submit" id="submit" />
+            	</p>
+    	    </form>
+            <div id="successMsg"></div>
+            <div id="errorMsg"></div>
+            <?
+			}
+			else {
+				echo "<span style='color:white'>Welcome back, <b>".$_SESSION['username']."</b> | </span> <a href='logout.php'>Log Out</a>";
+			}
+			?>
         </div>
     </div>
 </div><!-- END HEADER DIVIDER -->
