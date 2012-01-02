@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -38,7 +41,8 @@
                 <li class="current"><a href="./index.php">Home</a></li>
                 <li><a href="./item.php">Item List</a></li>
                 <li><a href="./ended.php">Ended Items</a></li>
-                <li><a href="./register.php">Register</a></li>
+                <?php if($_SESSION['username'] == "") 
+                    echo '<li><a href="./register.php">Register</a></li>'?>
                 <li><a href="./about.php">About Us</a></li>	
                 <li><a href="./contact.php">Contact</a></li>
                 <li>
