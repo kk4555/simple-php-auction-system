@@ -24,13 +24,11 @@ $count = mysqli_num_rows($result);
 if ($count==1) {
     $_SESSION['username']=$username;
     $_SESSION['password']=$password;
-	$data['username']=$username;  
-	$data['success'] = true; 
+	header("Location: index.php");
 }
 else {
-	$data['success'] = false;
-	$data['message'] = 'Wrong username or password';
+	$_SESSION['error']=1;
+	header("Location: login_panel.php");
 }
-echo json_encode($data);
 mysqli_close();
 ?>

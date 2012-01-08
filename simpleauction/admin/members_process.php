@@ -11,6 +11,13 @@
 <div>
 <!-- START MAIN CONTAINER -->
 <div class="minicontainer">
+<?php
+    require("../conf.php");
+    
+    $username = $_GET['username'];
+    $userid = $_GET['userid'];
+	    
+?>
 <form id="common-form" method="post" action="join.php">
 	<h4>Enter either Username or User ID to search for members</h4>
     <table>
@@ -25,7 +32,6 @@
     		<td class="field"><input class="input" id="userid" name="userid" type="text" /></td>
             <td class="status"></td>
         </tr>
-        <tr>
         	
       </table>
       <p class="button">

@@ -6,30 +6,12 @@ body{
 	font-size:12px;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-weight:normal;
+
 }
 
 .container{
 	width:960px;
 	margin:0px auto;
-}
-.minicontainer {
-	width:auto;
-	margin-left:auto;
-	margin-right:auto;
-	
-}
-
-.centerBox{
-	width:auto;
-	height:auto;
-	background-image:url(../images/background.png);
-	background-repeat: repeat;
-}
-.loginBox {
-	width: 198px;
-	float: left;
-	border-left-width: thin;
-	border-left-color: #999999;
 }
 
 .clear{
@@ -39,13 +21,11 @@ body{
 
 h1, h2, h3, h4, h5, h6{
 	margin-bottom:20px;
-	margin-top: 10px;
 }
 
 h1{
 	font-size:30px;
 	font-weight:normal;
-	font-family: 'Oswald', sans-serif;
 }
 
 h1.page-header{
@@ -79,14 +59,6 @@ h5{
 	font-family: 'Droid Sans', sans-serif;
 	font-size:18px;
 	font-weight:bold;
-}
-#head-break h5 {
-	font-family: 'Droid Sans', sans-serif;
-	font-size:18px;
-	font-weight:bold;
-	color: #FFFFFF;
-	margin-bottom: 0px;
-	margin-top: 0px;
 }
 
 h6{
@@ -158,6 +130,7 @@ p{
     font-size: 13px;
 	margin:0px;
 	padding:0px;
+	text-transform: uppercase;
 }
 
 #primary-nav ul{
@@ -255,28 +228,113 @@ p{
 #primary-nav ul li.sfHover ul a:hover{
     color: #444444 !important;
 }
+.outer {
+	#position: absolute;
+	#top: 50%;
+	display: table-cell;
+	vertical-align: middle;
+}
+#login-reg {
+	#position: relative;
+	#top: -50%;
+	float:right;
+	width: auto;
+	min-height: auto;
+	padding-top: 12px;
+	padding-bottom: 8px;
+	padding-right: 8px;
+	padding-left: 8px;
+	margin-top: auto;
+	margin-right: 250px;
+	border-radius: 6px;
+	border:1px solid #CFCFCF;
+	display: table-cell;
+	vertical-align: middle;	
+}
+#login-reg h6 {
+	color: white;
+	padding: 0px;
+	margin: 0px;
+}
+#login-reg b {
+	color: orange;
+}
+#loginBox {
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	border:1px solid #CFCFCF;
+	width: 370px;
+	padding: 10px;
+	padding-left: 30px;
+	margin: 10px;
+	margin-top:0px;
+	height: 200px;
+	float:left;
+	
+}
+#loginBox label {
+	font-size: 16px;
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	
+}
+#login-form td{
+	padding: 5px;
+}
+#login-form .input {
+	height:27px;
+	line-height:27px;
+	border:1px solid #cccccc;
+	padding:2px 8px;
+	-webkit-box-shadow: 0px 0px 5px 1px #dddddd;
+	-moz-box-shadow: 0px 0px 5px 1px #dddddd;
+	box-shadow: 0px 0px 5px 1px #dddddd;
+	width:230px;
+	color:#555555;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+#register-box {
+	margin-top:0px;
+	margin-left: 450px;
+	width: 500px;
+	height: 220px;
 
-
-
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border:1px solid #CFCFCF;
+}
+#member-announce {
+	#position: relative;
+	#top: -50%;
+	width: 960px;
+	min-height: auto;
+	padding: 10px;
+	margin-top: auto;
+	margin-right: auto;
+	margin-left: auto;
+	border-radius: 6px;
+	border:1px solid #CFCFCF;
+	vertical-align: middle;	
+}
 /*-----------------------------------------------------------------------------------*/
 /*	Head Divider CSS
 /*-----------------------------------------------------------------------------------*/
 
 #head-break{
-	height:173px;
+	height:145px;
 	width:100%;
-	background:url(../images/gold-coin.png) top center repeat-x;
+	background:url(../images/break_tile.png) top center repeat-x;
 	text-align:center;
+	margin:0 0 50px 0;
+	display: table;
+	#position: relative;
+	overflow: hidden;
+	
 }
 
-#head-break p{
-	margin:0px;
-	color:#CCC;
-	text-transform:uppercase;
-	letter-spacing:1px;
-	font-size:10px;
-} 
-#subscribe p{
+#head-break p, #subscribe p{
 	padding:30px 0 0 0;
 	margin:0px;
 	color:#CCC;
@@ -286,37 +344,83 @@ p{
 }
 
 #head-break h1, #subscribe h1{
-	color:#FFF;
+	color:#fff;
 	font-size:24px;
 	font-weight:normal;
 	margin:0px;
 	padding:0px;
 	text-shadow: 1px 1px 0px #000000;
 	filter: dropshadow(color=#000000, offx=1, offy=1);
-	font-family: 'Oswald', sans-serif;
-	text-transform: capitalize;
 }
 
 /*-----------------------------------------------------------------------------------*/
 /*	Center Half Content CSS
 /*-----------------------------------------------------------------------------------*/
 
-#ItemContain, #ItemBox{
+#left, #right{
 	float:left;
 }
 
-#ItemContain{
-	width:660px;
-	float: left;
+#left{
+	width:500px;
+	height:487px;
+	overflow:hidden;
+	background:url(../images/imac.jpg) top center no-repeat;
+	margin:0 40px 0 0;
 }
 
-#ItemBox{
-	width:195px;
-	height:300px;
+#right{
+	width:420px;
 	overflow:hidden;
-	border: 1px ridge #ccc;
-	padding: 8px;
-	margin: 3px;
+	padding:10px 0 0 0;
+}
+
+#right p{
+	font-size:13px;
+	line-height:24px;
+}
+
+#right h2{
+	margin:0 0 5px 0;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight:normal;
+	font-style:italic;
+	font-size:30px;
+}
+
+#slides, #slides li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#slides{
+	margin:25px 0 0 18px;
+}
+
+#slides li{
+	display: none;
+}
+
+
+.appstore{
+	position:relative;
+	margin:20px 0px;
+}
+
+.appstore, .appstore-hover{
+	display:block;
+	width:415px;
+	height:93px;
+	background:url(../images/appstore.png) center bottom no-repeat;
+	text-indent:-9999px;
+}
+
+.appstore-hover{
+	background-position:center top !important;
+	position:absolute;
+	top:-12;
+	left:0;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -387,10 +491,11 @@ p{
 /*-----------------------------------------------------------------------------------*/
 
 #image-tiles{
+	background:none repeat scroll 0 0 #F5F5F5;
 	border-top:1px solid #CCC;
 	border-bottom:1px solid #CCC;
 	padding:20px 0px 17px 0;
-	margin:35px 0 0 0;
+	margin:40px 0 0 0;
 }
 
 #image-tiles img{
@@ -416,6 +521,7 @@ p{
 /*-----------------------------------------------------------------------------------*/
 
 #sub-tiles{
+	background:none repeat scroll 0 0 #F5F5F5;
 	border-bottom:1px solid #CCC;
 }
 
@@ -448,10 +554,7 @@ p{
 /*-----------------------------------------------------------------------------------*/
 
 #feature-tiles{
-	margin-top: 20px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: 0px;
+	margin:20px 0px;
 }
 
 .feature{
@@ -738,9 +841,9 @@ p{
 	color:#777777;
 }
 
-#comment-form input, #contact-form .input, #register-form, #common-form .input{
+#comment-form input, #contact-form .input, #register-form .input, .common-form .input{
 	display:block;
-	height:27px;
+	min-height:27px;
 	line-height:27px;
 	border:1px solid #cccccc;
 	padding:2px 8px;
@@ -752,7 +855,6 @@ p{
 	font-size:12px;
 	font-family:Arial, Helvetica, sans-serif;
 }
-
 
 #comment-form textarea, #contact-form textarea{
 	border:1px solid #cccccc;
@@ -1174,41 +1276,17 @@ p{
 .feature h4.trash{background:url(../images/icons/trash.png) left center no-repeat;}
 .feature h4.trend{background:url(../images/icons/trend.png) left center no-repeat;}
 .feature h4.world{background:url(../images/icons/world.png) left center no-repeat;}
-.headlineBox {
-	margin: auto;
-	width: 960px;
-}
-.tokenBox {
-	width: 760px;
-	float: left;
-}
-.newsBox {
-	width: 250px;
-	height: 1043px;
-	float: left;
-	margin-right: 3px;
-	margin-left: 3px;
-	background-color: #1e1e1e;
-	padding-right: 10px;
-	padding-left: 10px;
-}
-.newsBox h1 {
-	font-size:30px;
-	font-weight:normal;
-	font-family: 'Oswald', sans-serif;
-	color: #FFFFFF;
-	text-align: center;
-}
-.newsBox h4 {
-	font-family: 'Droid Sans', sans-serif;
-	font-size:20px;
-	font-weight:bold;
-	color: #FFFFFF;
-	text-align: center;
-}
-.clearfix {
-	display:block;
-}
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+/* register ajax */
+
 .label {
 	padding-right: 20px;
 }
@@ -1222,7 +1300,7 @@ label.valid {
   background:url("../images/error/checked.gif") no-repeat 0px 0px;
 }
 .status {
-  padding-top:20px;
+  padding-top:15px;
   padding-left: 8px;
   vertical-align: top;
   width: 246px;
@@ -1232,14 +1310,37 @@ label.valid {
   padding-bottom: 10px;
   white-space: nowrap;
 }
-div#successMsg, div#errorMsg {
-	color: white;
+
+/* Item List */
+
+.itemContain {
+	padding-left: 50px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	min-height: 400px;
 }
 
-/* css for timepicker */
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.itemBox {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	display: inline-block;
+	padding: 10px 10px;
+	margin-left: 40px;
+	margin-right: 20px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 300px;
+}
+
+/* Member */
+
+#member-tabs {
+	width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}

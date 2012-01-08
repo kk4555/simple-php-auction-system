@@ -27,7 +27,23 @@
     <script type="text/javascript" src="../js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript">
 		$(document).ready(function(){
-			$("#tabs").tabs();
+			$('#tabs').tabs({
+    			load: function(event, ui) {
+        			$('a', ui.panel).live('click', function() {
+       					$(ui.panel).load(this.href);
+        				return false;
+    				});
+					$("#submit", ui.panel).live('click', function() {
+						$(ui.panel).
+					});
+    			}
+			});
+
+			$('a', ui.panel).live('click', function() {
+       			$(ui.panel).load(this.href);
+        		return false;
+    		});
+
             $("#date").datetimepicker({
 				showSecond: true,
 				timeFormat: 'hh:mm:ss',
@@ -97,9 +113,8 @@
 </ul>
 <div id="tabs-1">
 <input type="text" name="date" id="date" />
+<a href="http://google.com">Link</a>
 </div>
-
-
 </div>
 
 </div><!-- END MAIN CONTAINER --><br class="clear" />
