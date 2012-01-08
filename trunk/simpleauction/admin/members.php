@@ -5,33 +5,36 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>SimpleAuction - Admin Panel -> Members</title>
     <meta charset="UTF-8"></meta>
+    <script type="text/javascript">
+		$(document).ready(function() {
+			$("#submit").click(function(){
+            	if($("#username").val()==''&& $("#userid").val()=='') {
+					$("#dialog-message").dialog("destroy");
+					$("#dialog-message").dialog({
+						modal: true,
+						buttons: {
+							Ok: function() {
+								$(this).dialog("close");
+							}
+						}
+					});
+				}
+				else {
+					
+				}
+			});
+		});
+	</script>
 </head>
 
 <body>
 <div>
 <!-- START MAIN CONTAINER -->
+<div id="dialog-message" title="Message">
+	
+</div>
 <div class="minicontainer">
-<form id="common-form" method="get" action="./members_process.php">
-	<h4>Enter either Username or User ID to search for members</h4>
-    <table>
-    	<tr>
-    		<td class="label"><h4>Username</h4></td>
-    		<td class="field"><input class="input" id="username" name="username" type="text" /></td>
-        	<td class="status"></td>
-    	</tr>
-        
-    	<tr>
-        	<td class="label"><h4>User ID</h4></td>
-    		<td class="field"><input class="input" id="userid" name="userid" type="text" /></td>
-            <td class="status"></td>
-        </tr>
-        <tr>
-        	
-      </table>
-      <p class="button">
-    <input type="image" src="../images/submit.png" value="Submit" name="submit" id="submit" />
-    </p>
-    </form>
+<a href="members_process.php">Link</a>
 
 </div><!-- END MAIN CONTAINER --><br class="clear" />
 </div>

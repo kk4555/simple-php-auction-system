@@ -5,13 +5,14 @@
  * Written PHP & MySQL
  */
 
+sleep(1);
 
 require('conf.php');
 
-$user = "";
+$user = $_POST['user'];
 $realname = $_POST['realname'];
-$email = "justa.liar@me.com";
-$tel = "98109262";
+$email = $_POST['email'];
+$tel = $_POST['tel'];
 
 $sql = "SELECT * FROM users WHERE user_Name='$user'";
 
@@ -43,18 +44,20 @@ if ($row['user_Phone'] != $tel) {
 	if ($count1 != 0) {
 		$return['error'] = true;
 		if ($return['msg'] != "") 
-			$return['msg'] .= "The phone number you entered is already in use";
+			$return['msg'] .= " and the phone number you entered is already in use";
 		else
 			$return['msg'] = "The phone number you entered is already in use";
 	}
 }
 if ($return['error'] == "") {
 			$return['error'] = false;
+			
 			$return['msg'] = "Submit Succeeded";
+			
+			$update_query = "UPDATE users SET user_RealName = '$realname', user_Phone = '$tel', user_Email = '$email' WHERE user_Name = '$user'";
+			
+			mysqli_query($connect, $update_query);
 }
-
-echo $return['msg']."<br>";
-echo $row['user_Phone']."<br>";
-echo $row['user_Email'];
- 
+echo json_encode($return);
+mysqli_close();
 ?>
