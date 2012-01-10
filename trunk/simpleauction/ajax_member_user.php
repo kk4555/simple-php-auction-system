@@ -49,6 +49,7 @@ if ($row['user_Phone'] != $tel) {
 			$return['msg'] = "The phone number you entered is already in use";
 	}
 }
+
 if ($return['error'] == "") {
 			$return['error'] = false;
 			

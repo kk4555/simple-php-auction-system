@@ -305,7 +305,7 @@ p{
 	-moz-border-radius: 6px;
 	border:1px solid #CFCFCF;
 }
-#member-announce {
+.announcement {
 	#position: relative;
 	#top: -50%;
 	width: 960px;
@@ -314,7 +314,8 @@ p{
 	margin-top: auto;
 	margin-right: auto;
 	margin-left: auto;
-	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
 	border:1px solid #CFCFCF;
 	vertical-align: middle;	
 }
@@ -1343,4 +1344,76 @@ label.valid {
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#join-date {
+	float: right; 
+	width: 400px; 
+	height: 40px; 
+	background-color: #E0E0E0; 
+	text-align:center; 
+	vertical-align:baseline; 
+	padding-top: 10px;
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	Admin Side 
+/*-----------------------------------------------------------------------------------*/
+.admin_info {
+	padding-left: 50px;
+	padding-right: 10px;
+	margin-top: 0px;
+	padding-top: 10px;
+	margin-bottom: 30px;
+	padding-bottom: 20px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	min-height: 200px;
+	text-align:center;
+}
+#admin-login-form h4 {
+	display: inline;
+}
+#admin-login-form .input {
+	min-height:27px;
+	line-height:27px;
+	border:1px solid #cccccc;
+	padding:2px 8px;
+	-webkit-box-shadow: 0px 0px 5px 1px #dddddd;
+	-moz-box-shadow: 0px 0px 5px 1px #dddddd;
+	box-shadow: 0px 0px 5px 1px #dddddd;
+	width:230px;
+	color:#555555;
+	font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+#admin-login-form table {
+	margin-left: 250px;
+	margin-bottom: 10px;
+}
+#admin_navigation {
+	margin-top: 20px;
+}
+#member-manage-form {
+	margin-left: 250px;
+}
+#item_list {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	width:800px;
+	margin: 30px;
+}
+#item_list th {
+	padding: 10px;
+	text-align: center;
+	min-width: 50px;
+}
+#item_list td {
+	padding: 0px;
+	text-align: center;
+	font-size: 14px;
+	font-family:Arial, Helvetica, sans-serif;
 }
