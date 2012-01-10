@@ -238,7 +238,7 @@ function MM_swapImage() { //v3.0
         </fieldset>
         </form>
     </div>
-<h1>Fill in the registration form</h1><h1 id="success" style="display:none"> Registration Succeeded</h1><hr /><br />
+<h1>Fill in the registration form</h1><hr /><br />
 	<form id="register-form" method="post" action="join.php">
     <table>
     	<tr>

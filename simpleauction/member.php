@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('conf.php');
 if ($_SESSION['username'] == "")
 	header("Location: index.php");
 ?>
@@ -69,7 +70,7 @@ if ($_SESSION['username'] == "")
 <!-- HEADER DIVIDER -->
 <div id="head-break">
 <div class="outer">
-<div id="member-announce">
+<div class="announcement">
 <h1>This is the section for member</h1>
 <h1>You are allowed to edit or change your own profile here</h1>
 </div>
@@ -90,13 +91,23 @@ if ($_SESSION['username'] == "")
         </fieldset>
         </form>
     </div>
-      
-    <h1>Welcome back, <? echo $_SESSION['username']; ?> </h1>
+      <div id="join-date">
+        	<h5>Member Since : <?  
+				$username = $_SESSION['username'];
+				$sql = "SELECT * FROM users WHERE user_Name = '$username'";
+				$result = mysqli_query($connect, $sql);
+				$row = mysqli_fetch_array($result);
+				echo date("D d-M-Y H:m:s",$row['user_Date']);
+			?></h5>
+     	</div>
+    <h1>Welcome back, <b style="color:orange"><? echo $_SESSION['username']; ?></b> </h1>	
+    	
     	<div id="member-tabs">
         	<ul>
-            <li><a href="./member_password.php">Change Password</a></li>
+            
             	<li><a href="./member_user.php">User Information</a></li>
             	<li><a href="./member_address.php">Change Address</a></li>
+                <li><a href="./member_password.php">Change Password</a></li>
           		
             </ul>
         </div>
@@ -105,18 +116,6 @@ if ($_SESSION['username'] == "")
    
 </div><!-- END MAIN CONTAINER -->
 
-<!-- START LIGHTBOX TILES -->
-<div id="image-tiles">
-
-	<div class="container">
-    <h3>Ended Auctions</h3>
-        <a href="images/screens/full_one.jpg" title="App Screen Shot One" rel="lightbox-shots"><img src="images/screens/full_one.png" alt="screenshot one" /></a>
-        <a href="images/screens/full_two.jpg" title="App Screen Shot Two" rel="lightbox-shots"><img src="images/screens/full_two.png" alt="screenshot two" /></a>
-        <a href="images/screens/full_three.jpg" title="Screen Shot Three" rel="lightbox-shots"><img src="images/screens/full_three.png" alt="screenshot three" /></a>
-        <a href="images/screens/full_four.jpg" title="Screen Shot Four" rel="lightbox-shots"><img class="last" src="images/screens/full_four.png" alt="screenshot four" /></a>
-    </div>
-    
-</div><!-- END LIGHTBOX TILES -->
 </div>
 
 <!-- START FOOTER -->

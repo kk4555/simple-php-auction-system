@@ -11,7 +11,7 @@ mysqli_close();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="UTF-8" />
-    <title>SimpleAuction - Member -> User Information</title>
+    <title>SimpleAuction - Member -> Change Password</title>
     <!-- Include CSS -->
     <link href="./css/ajax.css" rel="stylesheet" type="text/css" />
     
@@ -46,6 +46,7 @@ function MM_swapImage() { //v3.0
 			$("#user-password-form").validate({
 				rules: {
 					password: {
+						required: true,
 						minlength: 5
 					},
 					password_new: {
@@ -60,6 +61,7 @@ function MM_swapImage() { //v3.0
 				},
 				messages: {
 					password: { 
+						required: "Enter current password",
                 		minlength: "Enter at least 5 characters"
             		},
 					password_new: {
@@ -139,7 +141,7 @@ function MM_swapImage() { //v3.0
     <table>
     	<tr>
     		<td class="label"><h4>Current Password</h4></td>
-    		<td class="field"><input class="input" value="<? echo $row['user_Password']; ?>" id="password" name="password" type="password" /></td>
+    		<td class="field"><input class="input" autofocus="autofocus" id="password" name="password" type="password" /></td>
         	<td class="status"></td>
     	</tr>
         
