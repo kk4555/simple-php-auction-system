@@ -17,17 +17,23 @@ require("conf.php");
 
     <!-- Include Scripts -->	
     <script type="text/javascript" src="./js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.cycle.lite.min.js"></script>
-    <script type="text/javascript" src="js/jquery.pngFix.pack.js"></script>
-    <script type="text/javascript" src="js/jquery.color.js"></script>
-    <script type="text/javascript" src="js/hoverIntent.js"></script>
-    <script type="text/javascript" src="js/superfish.js"></script>
-    <script type="text/javascript" src="js/slimbox2.js"></script>
-    <script type="text/javascript" src="js/slides.min.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>	
+    <script type="text/javascript" src="./js/jquery.cycle.lite.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.pngFix.pack.js"></script>
+    <script type="text/javascript" src="./js/jquery.color.js"></script>
+    <script type="text/javascript" src="./js/hoverIntent.js"></script>
+    <script type="text/javascript" src="./js/superfish.js"></script>
+    <script type="text/javascript" src="./js/slimbox2.js"></script>
+    <script type="text/javascript" src="./js/slides.min.js"></script>
+    <script type="text/javascript" src="./js/custom.js"></script>	
  	<script type="text/javascript" src="./js/jquery-ui-1.8.16.custom.min.js"></script>
+    <script type="text/javascript" src="./js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript">
-$(document).ready(function(){
+	setInterval("item_display()", 2000);
+	function item_display() {
+		$("#itemContain").load("item_display.php");
+	}
+	
+$(document).ready(function() {
 			$("#dialog-login").dialog("destroy");
 			$("#login").click(function(){
 				$("#dialog-login").dialog({
@@ -45,6 +51,7 @@ $(document).ready(function(){
 				});
 				return false;
 			});
+			item_display();
 		});
 function MM_swapImgRestore() { //v3.0
   var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
@@ -79,11 +86,10 @@ function MM_swapImage() { //v3.0
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-                <li class="current"><a href="./index.php">Home</a></li>                <li><a href="./ended.php">Ended Items</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>                <li><a href="./ended.php">Ended Auctions</a></li>
                 <li><a href="./about.php">About Us</a></li>	
-                <li><a href="./contact.php">Contact</a></li>
                 <?php
-				if($_SESSION['username'] != "")
+				if (isset($_SESSION['username']))
 					echo '<li id="member"><a href="./member.php">Member</a></li>';
 				
 				?>
@@ -106,14 +112,8 @@ function MM_swapImage() { //v3.0
 <div class="outer">
 <div id="login-reg">
 	<?php
-				if($_SESSION['username'] == "") {
-	?>
-	<a id="login" href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('login_button','','images/buttons/login_hover.png',1)"><img src="images/buttons/login.png" name="login_button" width="100" height="34" border="0" id="login_button" /></a>
-	<a id="register" href="./register.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('signup_button','','images/buttons/signup_hover.png',1)"><img src="images/buttons/signup.png" name="signup_button" width="100" height="34" border="0" id="signup_button" /></a>
-	<?
-	}
-	else {
-		$username = $_SESSION['username'];
+				if(isset($_SESSION['username'])) {
+					$username = $_SESSION['username'];
 		$sql = "SELECT user_Name, user_Credit FROM users WHERE user_Name = '$username'";
 		$result = mysqli_query($connect, $sql);
 		$row = mysqli_fetch_array($result);
@@ -123,8 +123,16 @@ function MM_swapImage() { //v3.0
     	<a id="logout" href="./logout.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('logout_button','','images/buttons/logout_hover.png',1)"><img src="images/buttons/logout.png" name="logout_button" width="100" height="34" border="0" id="logout_button" /></a>
     <?
 		}	
-	?>
+	else {
 		
+	?>
+	
+	<a id="login" href="#" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('login_button','','images/buttons/login_hover.png',1)"><img src="images/buttons/login.png" name="login_button" width="100" height="34" border="0" id="login_button" /></a>
+	<a id="register" href="./register.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('signup_button','','images/buttons/signup_hover.png',1)"><img src="images/buttons/signup.png" name="signup_button" width="100" height="34" border="0" id="signup_button" /></a>
+    
+    <?
+	}
+	?>
 				
 </div>
 </div>
@@ -145,75 +153,20 @@ function MM_swapImage() { //v3.0
         </form>
     </div>
 	<!-- START Auction Item CONTAINER -->
-  <div class="itemContain">
     <h1>Live Auctions</h1>
-    	<div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-        <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-        <div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-         <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-        <div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-         <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-        <div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-         <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-        <div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-         <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-        <div class="itemBox">
-        <img name="itemOne" src="./images/mbpro.jpg" width="195" height="167" alt="" />
-         <p>ITEM NAME</p>
-        <p>ITEM PRICE</p>
-        <p>TIME LEFT</p>
-        <a href="register.html"><img src="images/login.png" alt="Bid Now" width="100" height="60" longdesc="register.html" /></a>
-        </div>
-       <br class="clear" />
-       <br class="clear" />
+  <div id="itemContain" class="itemContain">
+    
+    	
     </div>
 
   <!-- END Auction Item CONTAINER -->
     
     
-
-    
-    <br class="clear" />
     
 </div><!-- END MAIN CONTAINER -->
-
-<!-- START LIGHTBOX TILES -->
-<div id="image-tiles">
-
-	<div class="container">
-    <h3>Ended Auctions</h3>
-        <a href="images/screens/full_one.jpg" title="App Screen Shot One" rel="lightbox-shots"><img src="images/screens/full_one.png" alt="screenshot one" /></a>
-        <a href="images/screens/full_two.jpg" title="App Screen Shot Two" rel="lightbox-shots"><img src="images/screens/full_two.png" alt="screenshot two" /></a>
-        <a href="images/screens/full_three.jpg" title="Screen Shot Three" rel="lightbox-shots"><img src="images/screens/full_three.png" alt="screenshot three" /></a>
-        <a href="images/screens/full_four.jpg" title="Screen Shot Four" rel="lightbox-shots"><img class="last" src="images/screens/full_four.png" alt="screenshot four" /></a>
-    </div>
-    
-</div><!-- END LIGHTBOX TILES -->
+<br class="clear" />
+<br class="clear" />
+<br class="clear" />
 </div>
 
 <!-- START FOOTER -->
@@ -236,3 +189,6 @@ function MM_swapImage() { //v3.0
 </div><!-- END FOOTER -->
 </body>
 </html>
+<?
+mysqli_close($connect);
+?>

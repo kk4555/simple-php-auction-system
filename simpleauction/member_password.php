@@ -5,7 +5,7 @@ $username = $_SESSION['username'];
 $sql = "SELECT * FROM users WHERE user_Name = '$username'";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($result);
-mysqli_close();
+mysqli_close($connect);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -45,9 +45,10 @@ function MM_swapImage() { //v3.0
 		$(document).ready(function(e) {
 			$("#user-password-form").validate({
 				rules: {
-					password: {
+					current_password: {
 						required: true,
-						minlength: 5
+						minlength: 5,
+						remote: "ajax_check_password.php"
 					},
 					password_new: {
 						required: true,
@@ -60,9 +61,10 @@ function MM_swapImage() { //v3.0
 					}
 				},
 				messages: {
-					password: { 
+					current_password: { 
 						required: "Enter current password",
-                		minlength: "Enter at least 5 characters"
+                		minlength: "Enter at least 5 characters",
+						remote: "Password mismatch"
             		},
 					password_new: {
 						required: "Provide a password",
@@ -99,17 +101,23 @@ function MM_swapImage() { //v3.0
 						dataType: 'json',
 						data: {
 							user: '<? echo $row['user_Name']; ?>',
+							password: $("#current_password").val(),
 							password_new: $("#password_new").val()
 						},
 						success: function(data) {
 							$(".loading").hide(500);
 							$("#message_password").removeClass();
 							if (data.error === true) {
-								$("#message_password").addClass("message-error");
+								$("#message_password").addClass("message-error");	
 							}
 							else $("#message_password").addClass("message-success");
 							$("#message_password").text(data.msg).show(500);
-							$("#message_reload").show(500);
+							if (data.error === true) {
+								$("#user-password-form").show(500);
+							}
+							else {
+								$("#message_reload").show(500);
+							}
 						},
 						error: function(XMLHttpRequest, textStatus, errorThrown) {
 							$(".loading").hide(500);
@@ -141,7 +149,7 @@ function MM_swapImage() { //v3.0
     <table>
     	<tr>
     		<td class="label"><h4>Current Password</h4></td>
-    		<td class="field"><input class="input" autofocus="autofocus" id="password" name="password" type="password" /></td>
+    		<td class="field"><input class="input" autofocus="autofocus" id="current_password" name="current_password" type="password" /></td>
         	<td class="status"></td>
     	</tr>
         

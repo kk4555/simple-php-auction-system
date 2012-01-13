@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if ($_SESSION['admin'] == "") {
+if (!isset($_SESSION['admin'])) {
 	header("Location: index.php");
 }
 include("./admin_image_resize.php");
@@ -10,18 +10,13 @@ $upload_folder = "../uploads/";
 
 $itemname = $_POST['itemname'];
 $description = $_POST['description'];
-$itemstart = $_POST['itemstart'];
+
 $itemclose = $_POST['itemclose'];
 $itemincrement = $_POST['itemincrement'];
 $imagepath = $upload_folder.$_FILES["file"]["name"];
 $itemincrement = floatval(str_replace("S$","",$itemincrement));
 
 
-if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
-|| ($_FILES["file"]["type"] == "image/pjpeg"))
-&& ($_FILES["file"]["size"] < 20000000))
-  {
   if ($_FILES["file"]["error"] > 0)
     {
 	$error = 0;
@@ -47,17 +42,12 @@ if ((($_FILES["file"]["type"] == "image/gif")
 	  $result = mysqli_query($connect, $id_find);
 	  $row = mysqli_fetch_array($result);
 	  $adminid = $row['admin_ID'];
-	  $sql = "INSERT INTO items(item_Name, item_Description, item_Start_Date, item_Close_Date, item_Increment_Price, item_Path, admin_ID) VALUES ('$itemname', '$description', '$itemstart', '$itemclose', $itemincrement, '$imagepath', '$adminid')";
+	  $sql = "INSERT INTO items(item_Name, item_Description, item_Close_Date, item_Increment_Price, item_Path, admin_ID) VALUES ('$itemname', '$description', '$itemclose', $itemincrement, '$imagepath', '$adminid')";
 	  mysqli_query($connect, $sql);
-	  mysqli_close();
+	  mysqli_close($connect);
 	  
       }
     }
-  }
-else
-  {
-  $error = 2;
-	}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

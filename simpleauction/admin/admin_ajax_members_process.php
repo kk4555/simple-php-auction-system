@@ -16,4 +16,5 @@ if ($count == 1) {
 else {
 	header("Location: admin_members_management.php?error=1");
 }
+mysqli_close($connect);
 ?>

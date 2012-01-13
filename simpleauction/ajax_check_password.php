@@ -1,23 +1,24 @@
 <?php
-
+session_start();
 /* CP2013 - Software Engineering
  * SimpleAuction Project
  * Written PHP & MySQL
  */
 require('conf.php');
 
-$user = $_REQUEST['username'];
+$user = $_SESSION['username'];
 
-$sql = "SELECT * FROM users WHERE user_Name='$user'";
+$current_password = $_REQUEST['current_password'];
+
+$sql = "SELECT * FROM users WHERE user_Name='$user' AND user_Password ='$current_password'";
 
 $result = mysqli_query($connect, $sql);
 
 $count = mysqli_num_rows($result);
-if (isset($count)) {
-if ($count == 0) 
+
+if ($count == 1) 
     echo "true";
-}
 else
     echo 'false';
-mysqli_close($connect);
+mysqli_close($connect);	
 ?>

@@ -1,6 +1,6 @@
 <?
 session_start();
-if ($_SESSION['admin'] == "") {
+if (!isset($_SESSION['admin'])) {
 	header("Location: index.php");
 }
 ?>
@@ -105,15 +105,11 @@ function MM_swapImage() { //v3.0
 					label.addClass("valid");
 				} 					
 			});
-        $("#itemstart").datetimepicker({
-			dateFormat: 'dd/mm/yy',
-			showSecond: true,
-			timeFormat: 'hh:mm:ss'
-		});
 		$("#itemclose").datetimepicker({
-			dateFormat: 'dd/mm/yy',
-			showSecond: true,
-			timeFormat: 'hh:mm:ss'
+				dateFormat: 'yy/mm/dd',
+				showSecond: true,
+				timeFormat: 'hh:mm:ss',
+				minDate: 0
 		});
 		$("#slider-range").slider({
 			min: 0,
@@ -207,11 +203,6 @@ function MM_swapImage() { //v3.0
 	-moz-box-shadow: 0px 0px 5px 1px #dddddd; box-shadow: 0px 0px 5px 1px #dddddd;"></textarea></td>
             <td class="status"></td>
         </tr>
-       <tr>
-    		<td class="label"><h4>Item Start Date</h4></td>
-    		<td class="field"><input class="input" id="itemstart" name="itemstart" type="text" /></td>
-        	<td class="status"></td>
-    	</tr> 
         <tr>
     		<td class="label"><h4>Item Close Date</h4></td>
     		<td class="field"><input class="input" id="itemclose" name="itemclose" type="text" /></td>

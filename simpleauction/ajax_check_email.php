@@ -20,5 +20,5 @@ if ($count == 0)
     echo "true";
 else
     echo 'false';
-
+mysqli_close($connect);
 ?>

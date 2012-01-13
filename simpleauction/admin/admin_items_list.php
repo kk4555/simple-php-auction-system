@@ -1,6 +1,6 @@
 <?
 session_start();
-if ($_SESSION['admin'] == "") {
+if (!isset($_SESSION['admin'])) {
 	header("Location: index.php");
 }
 require("../conf.php");
@@ -11,6 +11,7 @@ while ($row = mysqli_fetch_array($result)) {
 	$itemname[] = $row['item_Name'];
 	$itempath[] = $row['item_Path'];
 }
+if (isset($_GET['act'])) {
 if ($_GET['act'] == 'del') {
 	$id = $_GET['id'];
 	$path = mysqli_query($connect, "SELECT * FROM items WHERE item_ID = '$id'");
@@ -23,6 +24,7 @@ if ($_GET['act'] == 'del') {
 		window.location = 'admin_items_list.php';
     </script>
 <?
+}
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -152,6 +154,7 @@ function MM_swapImage() { //v3.0
         <th><h4>Delete?</h4></th>
      </tr>
      <?
+	 if (isset($itemid)) {
 	 for($i=0; $i<count($itemid); $i++) {
 		 echo "<tr>";
 		 echo "<td>".$itemid[$i]."</td>";
@@ -162,6 +165,7 @@ function MM_swapImage() { //v3.0
          <td><a href="javascript:void(this)" onClick="delete_confirm('<? echo $itemid[$i]; ?>')" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('delete_button','','../images/buttons/delete_hover.png',1)"><img src="../images/buttons/delete.png" name="delete_button" border="0" id="delete_button" /></a></td>        
          <?
 		 echo "</tr>";
+	 }
 	 }
 	 ?>
 </table>
@@ -199,3 +203,6 @@ function MM_swapImage() { //v3.0
 
 </body>
 </html>
+<?
+mysqli_close($connect);
+?>

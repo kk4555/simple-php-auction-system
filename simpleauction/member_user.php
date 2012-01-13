@@ -5,7 +5,7 @@ $username = $_SESSION['username'];
 $sql = "SELECT * FROM users WHERE user_Name = '$username'";
 $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($result);
-mysqli_close();
+mysqli_close($connect);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

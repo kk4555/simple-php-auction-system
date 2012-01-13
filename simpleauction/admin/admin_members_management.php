@@ -1,11 +1,12 @@
 <?
 session_start();
-if ($_SESSION['admin'] == "") {
+if (!isset($_SESSION['admin'])) {
 	header("Location: index.php");
 }
 require("../conf.php");
 	
-$user = $_GET['username'];
+if (isset($_GET['username'])) {
+	$user = $_GET['username'];
 	
 $sql = "SELECT * FROM users WHERE user_Name = '$user'";
 	
@@ -14,7 +15,8 @@ $result = mysqli_query($connect, $sql);
 $row = mysqli_fetch_array($result);
 
 
-mysqli_close();
+mysqli_close($connect);
+}
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -195,12 +197,14 @@ function MM_swapImage() { //v3.0
 <!-- START MAIN CONTAINER -->
 <div class="container">
 <div class="admin_info">
-<? 
+<?
+if (isset($_GET['error'])) { 
 if ($_GET['error'] == 1) {
 	echo '<h1 style="margin-top: 60px">No UserName or User ID found.</h1>';
 ?>
 <a href="./admin_members.php" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('back_button','','../images/buttons/back_hover.png',1)"><img src="../images/buttons/back.png" alt="Back" name="back_button" width="100" height="34" border="0" id="back_button" /></a>
 <?
+}
 }
 else {
 ?>

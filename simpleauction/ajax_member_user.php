@@ -50,7 +50,7 @@ if ($row['user_Phone'] != $tel) {
 	}
 }
 
-if ($return['error'] == "") {
+if (!isset($return['error'])) {
 			$return['error'] = false;
 			
 			$return['msg'] = "Submit Succeeded";
@@ -60,5 +60,6 @@ if ($return['error'] == "") {
 			mysqli_query($connect, $update_query);
 }
 echo json_encode($return);
-mysqli_close();
+
+mysqli_close($connect);
 ?>
