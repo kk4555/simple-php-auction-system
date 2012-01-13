@@ -300,6 +300,7 @@ p{
 	margin-left: 450px;
 	width: 500px;
 	height: 220px;
+	text-align: center;
 
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
@@ -1323,8 +1324,25 @@ label.valid {
 	-moz-border-radius: 4px;
 	border:1px solid #CFCFCF;
 	min-height: 400px;
+	min-width: 200px;
 }
-
+.item_head {
+	text-align: center;
+	font-size: 16px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.item_price {
+	color: orange;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	font-family:Arial, Helvetica, sans-serif;
+	
+}
+.item_time {
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
 .itemBox {
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -1335,8 +1353,10 @@ label.valid {
 	margin-right: 20px;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	height: 300px;
+	min-height: 300px;
+	text-align: center;
 }
+
 
 /* Member */
 
@@ -1416,4 +1436,66 @@ label.valid {
 	text-align: center;
 	font-size: 14px;
 	font-family:Arial, Helvetica, sans-serif;
+}
+
+/* BID */
+#bid_image {
+	display: inline-block;
+	padding: 10px;
+	margin: 10px;
+	margin-left: 0px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	height: 200px;
+	width: 250px;
+	text-align:center;
+}
+#bid_box {
+	float: right;
+	display: inline-block;
+	width: 255px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	padding: 10px;
+	margin: 10px;
+	margin-left: 0px;
+	height: 200px;
+	text-align: center;
+}
+#time_box {
+		
+}
+#bid_history {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	float: right;
+	margin: 10px;
+	height: 200px;
+	padding: 10px;
+	margin-right: 35px;
+	width: 250px;
+	overflow: hidden;
+}
+#bid_history th {
+	text-align: center;
+	font-weight: bold;
+}
+#bid_history td {
+	border-top: thin solid #CCC;
+	padding: 2px;
+}
+
+#bid_description {
+	padding: 40px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border:1px solid #CFCFCF;
+	width: 780px;
+	margin-bottom: 20px;
+}
+.highlight {
+	color:red;
 }

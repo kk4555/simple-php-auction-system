@@ -1,6 +1,6 @@
 <?php
 session_start();
-if ($_SESSION['username'] != "") {
+if (isset($_SESSION['username'])) {
 	header("Location: index.php");
 }
 ?>
@@ -71,13 +71,13 @@ function MM_swapImage() { //v3.0
 }
     </script>
     <?
-		if ($_SESSION['error'] == 1) {
+		if (isset($_SESSION['error'])) {
 	?>
     	<script type="text/javascript">
 			alert("Username or Password is incorrect");
 		</script>
 	<?		
-		$_SESSION['error'] = 0;
+			$_SESSION['error'] = 0;
 		}
 	?> 
 </head>
@@ -91,13 +91,10 @@ function MM_swapImage() { //v3.0
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-                <li class="current"><a href="./index.php">Home</a></li>
-                <li><a href="./item.php">Item List</a></li>
-                <li><a href="./ended.php">Ended Items</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>                <li><a href="./ended.php">Ended Auctions</a></li>
                 <li><a href="./about.php">About Us</a></li>	
-                <li><a href="./contact.php">Contact</a></li>
                 <?php
-				if($_SESSION['username'] != "")
+				if (isset($_SESSION['username']))
 					echo '<li id="member"><a href="./member.php">Member</a></li>';
 				
 				?>
@@ -146,6 +143,7 @@ function MM_swapImage() { //v3.0
         </form>
     </div>
     <div id="register-box">
+    <a href="./register.php"><img src="./images/signup_banner.png" /></a>
     </div>
     
     

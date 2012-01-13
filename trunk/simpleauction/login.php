@@ -21,14 +21,17 @@ $result = mysqli_query($connect, $sql);
 
 $count = mysqli_num_rows($result);
 
+$row = mysqli_fetch_array($result);
+
 if ($count==1) {
-    $_SESSION['username']=$username;
-    $_SESSION['password']=$password;
+    $_SESSION['username'] = $username;
+    $_SESSION['password'] = $password;
+	$_SESSION['userid'] = $row['user_ID'];
 	header("Location: index.php");
 }
 else {
 	$_SESSION['error']=1;
 	header("Location: login_panel.php");
 }
-mysqli_close();
+mysqli_close($connect);
 ?>

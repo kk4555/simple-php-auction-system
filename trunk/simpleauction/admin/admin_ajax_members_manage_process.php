@@ -66,7 +66,7 @@ if (($row['user_Phone'] != $tel && $row['user_Name'] == $newuser) || $row['user_
 			$return['msg'] .= "phone number";
 	}
 }
-if ($return['error'] == true) {
+if (isset($return['error'])) {
 	$return['msg'] .= " is already in use";
 }
 else {
@@ -78,5 +78,5 @@ else {
 }
 
 echo json_encode($return);
-mysqli_close();
+mysqli_close($connect);
 ?>

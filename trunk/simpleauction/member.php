@@ -1,7 +1,7 @@
 <?php
 session_start();
 require('conf.php');
-if ($_SESSION['username'] == "")
+if (is_null($_SESSION['username']))
 	header("Location: index.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,9 +45,8 @@ if ($_SESSION['username'] == "")
     	<div id="primary-nav" class="header-right">
         
             <ul class="sf-menu">
-                <li class="current"><a href="./index.php">Home</a></li>                <li><a href="./ended.php">Ended Items</a></li>
+                <li class="current"><a href="./index.php">Home</a></li>                <li><a href="./ended.php">Ended Auctions</a></li>
                 <li><a href="./about.php">About Us</a></li>	
-                <li><a href="./contact.php">Contact</a></li>
                 <?php
 				if($_SESSION['username'] != "")
 					echo '<li id="member"><a href="./member.php">Member</a></li>';
@@ -98,6 +97,7 @@ if ($_SESSION['username'] == "")
 				$result = mysqli_query($connect, $sql);
 				$row = mysqli_fetch_array($result);
 				echo date("D d-M-Y H:m:s",$row['user_Date']);
+				mysqli_close($connect);
 			?></h5>
      	</div>
     <h1>Welcome back, <b style="color:orange"><? echo $_SESSION['username']; ?></b> </h1>	
@@ -108,7 +108,7 @@ if ($_SESSION['username'] == "")
             	<li><a href="./member_user.php">User Information</a></li>
             	<li><a href="./member_address.php">Change Address</a></li>
                 <li><a href="./member_password.php">Change Password</a></li>
-          		
+          		<li><a href="./member_auction_history.php">Auction History</a></li>
             </ul>
         </div>
        <br class="clear" />

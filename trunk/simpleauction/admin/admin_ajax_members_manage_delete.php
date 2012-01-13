@@ -13,5 +13,5 @@ $return['msg'] = "Deleted!";
 
 echo json_encode($return);
 
-mysqli_close();
+mysqli_close($connect);
 ?>

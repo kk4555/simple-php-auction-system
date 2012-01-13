@@ -18,7 +18,7 @@
 
 $server = "localhost";
 $dbuser = "root";
-$pwd = "root";
+$pwd = "";
 $dbname = "simpleauction";
 
 /*

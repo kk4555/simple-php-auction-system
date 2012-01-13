@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if ($_SESSION['admin'] == "") {
+if (!isset($_SESSION['admin'])) {
 	header("Location: index.php");
 }
 include("./admin_image_resize.php");
@@ -12,7 +12,6 @@ $itemid = $_POST['itemid'];
 $itempath = $_POST['itempath'];
 $itemname = $_POST['itemname'];
 $description = $_POST['description'];
-$itemstart = $_POST['itemstart'];
 $itemclose = $_POST['itemclose'];
 $itemincrement = $_POST['itemincrement'];
 $imagepath = $upload_folder.$_FILES["file"]["name"];
@@ -22,11 +21,6 @@ $itemincrement = floatval(str_replace("S$","",$itemincrement));
  
 if ($_FILES['file']['name'] != "") {
 
-if ((($_FILES["file"]["type"] == "image/gif")
-|| ($_FILES["file"]["type"] == "image/jpeg")
-|| ($_FILES["file"]["type"] == "image/pjpeg"))
-&& ($_FILES["file"]["size"] < 20000000))
-  {
 	  $error = 3;
 	  unlink($itempath); 
       move_uploaded_file($_FILES["file"]["tmp_name"],
@@ -35,14 +29,16 @@ if ((($_FILES["file"]["type"] == "image/gif")
 	  $image->load($upload_folder. $_FILES["file"]["name"]);
 	  $image->resize(195, 167);
 	  $image->save($upload_folder. $_FILES["file"]["name"]);
-	  $sql = "UPDATE items SET item_Name = '$itemname', item_Description = '$description', item_Start_Date = '$itemstart', item_Close_Date ='$itemclose', item_Increment_Price = '$itemincrement', item_Path = '$imagepath' WHERE item_ID = '$itemid'";
-	  mysqli_query($connect, $sql);	  
-  }  
+	  $sql = "UPDATE items SET item_Name = '$itemname', item_Description = '$description', item_Close_Date ='$itemclose', item_Increment_Price = '$itemincrement', item_Path = '$imagepath' WHERE item_ID = '$itemid'";
+	  mysqli_query($connect, $sql);	 
+	  mysqli_close($connect); 
+    
 }
 else {
 	$error = 3;
-	$sql = "UPDATE items SET item_Name = '$itemname', item_Description = '$description', item_Start_Date = '$itemstart', item_Close_Date ='$itemclose', item_Increment_Price = '$itemincrement' WHERE item_ID = '$itemid'";
+	$sql = "UPDATE items SET item_Name = '$itemname', item_Description = '$description', item_Close_Date ='$itemclose', item_Increment_Price = '$itemincrement' WHERE item_ID = '$itemid'";
 	mysqli_query($connect, $sql);
+	mysqli_close($connect);
 
 }
 ?>

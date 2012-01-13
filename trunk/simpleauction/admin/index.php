@@ -137,7 +137,7 @@ function MM_swapImage() { //v3.0
 <div class="container">
 <div class="admin_info">
 <?
-	if ($_SESSION['admin'] == "") {
+	if (!isset($_SESSION['admin'])) {
 ?>
 <h1 id="login_head"> Login </h1>
 <div id="message_admin_login" style="display:none;">
