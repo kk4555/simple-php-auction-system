@@ -1,0 +1,1 @@
+An auction system that provides simple GUI with fully functional forward auction type.
